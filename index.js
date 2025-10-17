@@ -12,18 +12,19 @@ const BASE_URL = "https://fakestoreapi.com";
       console.log("npm run start DELETE products/<id>");
       return;
     }
+
+    
     const [endpoint, productId] = resource.split("/");
-     // Rutas según método
+
+
     switch (method.toUpperCase()) {
       case "GET":
         if (productId) {
-          // Obtener producto por ID
           const res = await fetch(`${BASE_URL}/${endpoint}/${productId}`);
           const data = await res.json();
           console.log("📦 Producto encontrado:");
           console.log(data);
         } else {
-          // Obtener todos los productos
           const res = await fetch(`${BASE_URL}/${endpoint}`);
           const data = await res.json();
           console.log("🛍️ Lista de productos:");
@@ -31,5 +32,25 @@ const BASE_URL = "https://fakestoreapi.com";
             console.log(`#${id} - ${title} ($${price})`);
           });
         }
+        break;
+
+        case "POST":
+        const [title, price, category] = args;
+        if (!title || !price || !category) {
+          console.error("❗Debes ingresar: <title> <price> <category>");
+          return;
+        }
+
+        const newProduct = { title, price: parseFloat(price), category };
+
+        const postRes = await fetch(`${BASE_URL}/${endpoint}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newProduct),
+        });
+
+        const postData = await postRes.json();
+        console.log("✅ Producto creado:");
+        console.log(postData);
         break;
   }

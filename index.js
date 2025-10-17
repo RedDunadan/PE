@@ -5,7 +5,7 @@ const BASE_URL = "https://fakestoreapi.com";
 (async () => {
   try {
     if (!method || !resource) {
-      console.log("❗Uso correcto:");
+      console.log("Uso correcto:");
       console.log("npm run start GET products");
       console.log("npm run start GET products/<id>");
       console.log("npm run start POST products <title> <price> <category>");
@@ -37,7 +37,7 @@ const BASE_URL = "https://fakestoreapi.com";
         case "POST":
         const [title, price, category] = args;
         if (!title || !price || !category) {
-          console.error("❗Debes ingresar: <title> <price> <category>");
+          console.error("Debes ingresar: <title> <price> <category>");
           return;
         }
 
@@ -56,7 +56,7 @@ const BASE_URL = "https://fakestoreapi.com";
 
         case "DELETE":
         if (!productId) {
-          console.error("❗Debes indicar un ID de producto para eliminar.");
+          console.error("Debes indicar un ID de producto para eliminar.");
           return;
         }
 
@@ -70,7 +70,7 @@ const BASE_URL = "https://fakestoreapi.com";
         break;
 
       default:
-        console.error("❗Método no soportado. Usa GET, POST o DELETE.");
+        console.error("Método no soportado. Usa GET, POST o DELETE.");
     }
   } catch (error) {
     console.error("💥 Error:", error.message);

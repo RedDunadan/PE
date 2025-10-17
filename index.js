@@ -1,4 +1,9 @@
-const [, , method, resource, ...args] = process.argv;
+const argsIndex = process.argv.findIndex(arg =>
+  ["GET", "POST", "DELETE"].includes(arg?.toUpperCase())
+);
+
+const [method, resource, ...args] = process.argv.slice(argsIndex);
+
 
 const BASE_URL = "https://fakestoreapi.com";
 
@@ -22,12 +27,12 @@ const BASE_URL = "https://fakestoreapi.com";
         if (productId) {
           const res = await fetch(`${BASE_URL}/${endpoint}/${productId}`);
           const data = await res.json();
-          console.log("📦 Producto encontrado:");
+          console.log("Producto encontrado:");
           console.log(data);
         } else {
           const res = await fetch(`${BASE_URL}/${endpoint}`);
           const data = await res.json();
-          console.log("🛍️ Lista de productos:");
+          console.log("Lista de productos:");
           data.forEach(({ id, title, price }) => {
             console.log(`#${id} - ${title} ($${price})`);
           });

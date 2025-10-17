@@ -13,7 +13,7 @@ const BASE_URL = "https://fakestoreapi.com";
       return;
     }
 
-    
+
     const [endpoint, productId] = resource.split("/");
 
 
@@ -53,4 +53,26 @@ const BASE_URL = "https://fakestoreapi.com";
         console.log("✅ Producto creado:");
         console.log(postData);
         break;
+
+        case "DELETE":
+        if (!productId) {
+          console.error("❗Debes indicar un ID de producto para eliminar.");
+          return;
+        }
+
+        const delRes = await fetch(`${BASE_URL}/${endpoint}/${productId}`, {
+          method: "DELETE",
+        });
+
+        const delData = await delRes.json();
+        console.log("🗑️ Producto eliminado:");
+        console.log(delData);
+        break;
+
+      default:
+        console.error("❗Método no soportado. Usa GET, POST o DELETE.");
+    }
+  } catch (error) {
+    console.error("💥 Error:", error.message);
   }
+})();

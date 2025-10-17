@@ -12,3 +12,5 @@ const BASE_URL = "https://fakestoreapi.com";
       console.log("npm run start DELETE products/<id>");
       return;
     }
+    const [endpoint, productId] = resource.split("/");
+  }

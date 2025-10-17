@@ -55,7 +55,7 @@ const BASE_URL = "https://fakestoreapi.com";
         });
 
         const postData = await postRes.json();
-        console.log("✅ Producto creado:");
+        console.log("Producto creado:");
         console.log(postData);
         break;
 
@@ -70,7 +70,7 @@ const BASE_URL = "https://fakestoreapi.com";
         });
 
         const delData = await delRes.json();
-        console.log("🗑️ Producto eliminado:");
+        console.log("Producto eliminado:");
         console.log(delData);
         break;
 

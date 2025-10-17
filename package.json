@@ -1,0 +1,19 @@
+{
+  "name": "pe",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "pe"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "pe"
+  },
+  "license": "MIT",
+  "author": "Angel Sarmiento",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

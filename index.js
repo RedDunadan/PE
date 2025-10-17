@@ -13,4 +13,23 @@ const BASE_URL = "https://fakestoreapi.com";
       return;
     }
     const [endpoint, productId] = resource.split("/");
+     // Rutas según método
+    switch (method.toUpperCase()) {
+      case "GET":
+        if (productId) {
+          // Obtener producto por ID
+          const res = await fetch(`${BASE_URL}/${endpoint}/${productId}`);
+          const data = await res.json();
+          console.log("📦 Producto encontrado:");
+          console.log(data);
+        } else {
+          // Obtener todos los productos
+          const res = await fetch(`${BASE_URL}/${endpoint}`);
+          const data = await res.json();
+          console.log("🛍️ Lista de productos:");
+          data.forEach(({ id, title, price }) => {
+            console.log(`#${id} - ${title} ($${price})`);
+          });
+        }
+        break;
   }

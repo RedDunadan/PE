@@ -78,6 +78,6 @@ const BASE_URL = "https://fakestoreapi.com";
         console.error("Método no soportado. Usa GET, POST o DELETE.");
     }
   } catch (error) {
-    console.error("💥 Error:", error.message);
+    console.error("Error:", error.message);
   }
 })();
